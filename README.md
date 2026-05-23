@@ -17,3 +17,14 @@ reference
 [https://donbulinux.hatenablog.jp/entry/2025/12/16/192424](https://donbulinux.hatenablog.jp/entry/2025/12/16/192424)  
 >Accept Suggestion On Enter 規定が on なので off にする  
 >2. インライン候補、からすべてのファイルのチェックを外す   
+
+**名前 'process' が見つかりません。ノードの型定義をインストールする必要があり**  
+2. tsconfig.json の設定確認インストール後もエラーが消えない場合は、  
+tsconfig.json の compilerOptions 内に "node" を追加してください。
+```
+json{
+  "compilerOptions": {
+    "types": ["node"]
+  }
+}
+```

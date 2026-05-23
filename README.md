@@ -13,3 +13,7 @@ reference
 [https://qiita.com/notakaos/items/3bbd2293e2ff286d9f49](https://qiita.com/notakaos/items/3bbd2293e2ff286d9f49)  
 >開発効率をあげるため、 tsc -> node の実行を自動的に行ってくれる ts-node パッケージを追加します。
 
+**VScode の予測変換の主張が強すぎるので切る**  
+[https://donbulinux.hatenablog.jp/entry/2025/12/16/192424](https://donbulinux.hatenablog.jp/entry/2025/12/16/192424)  
+>Accept Suggestion On Enter 規定が on なので off にする  
+>2. インライン候補、からすべてのファイルのチェックを外す   

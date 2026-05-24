@@ -17,10 +17,42 @@ const promptInput = async (text: string) => {
   return input.trim();
 };
 
+// (async () => {
+//   const name = await promptInput("名前を入力して下さい");
+//   console.log(name);
+//   const age = await promptInput("年齢を入力して下さい");
+//   console.log(age);
+//   process.exit();
+// })();
+
+class HitAndBlow {
+  answerSource = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  answer: string[] = [];
+  tryCount = 0;
+
+  // constructor() {
+  //   this.answerSource = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  //   this.answer = [];
+  //   this.tryCount = 0;
+  // }
+
+  setting() {
+    const answerLength = 3;
+
+    while (this.answer.length < answerLength) {
+      const randNum = Math.floor(Math.random() * this.answerSource.length);
+      const selectItem = this.answerSource[randNum];
+      if (!this.answer.includes(selectItem)) {
+        this.answer.push(selectItem);
+      }
+    }
+  }
+
+  play() {}
+}
+
 (async () => {
-  const name = await promptInput("名前を入力して下さい");
-  console.log(name);
-  const age = await promptInput("年齢を入力して下さい");
-  console.log(age);
-  process.exit();
+  const hitAndBlow = new HitAndBlow();
+  hitAndBlow.setting();
+  await hitAndBlow.play();
 })();

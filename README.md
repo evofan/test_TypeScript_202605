@@ -28,3 +28,9 @@ json{
   }
 }
 ```
+**【JavaScript】配列の includes() の使い方と注意点**  
+[https://zenn.dev/fd2025/articles/642192f4827ed6](https://zenn.dev/fd2025/articles/642192f4827ed6)  
+>JavaScriptで「配列に特定の値が含まれているか」を調べたいとき、  
+>よく使われるのが includes() メソッドです。
+
+

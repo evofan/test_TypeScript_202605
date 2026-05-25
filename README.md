@@ -33,4 +33,8 @@ json{
 >JavaScriptで「配列に特定の値が含まれているか」を調べたいとき、  
 >よく使われるのが includes() メソッドです。
 
+**TypeScriptで理解するclass構文(private,public,readonly修飾子 初期化のショートカット)**  
+[https://zenn.dev/kimura141899/articles/60bd0bc399296c](https://zenn.dev/kimura141899/articles/60bd0bc399296c)  
+
+
 

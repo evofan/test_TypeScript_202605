@@ -36,5 +36,7 @@ json{
 **TypeScriptで理解するclass構文(private,public,readonly修飾子 初期化のショートカット)**  
 [https://zenn.dev/kimura141899/articles/60bd0bc399296c](https://zenn.dev/kimura141899/articles/60bd0bc399296c)  
 
+**【TypeScript】ユニオン型の使い方と活用法**  
+[https://qiita.com/kenny-m/items/1a98f79c96a07f600a76](https://qiita.com/kenny-m/items/1a98f79c96a07f600a76)  
 
 

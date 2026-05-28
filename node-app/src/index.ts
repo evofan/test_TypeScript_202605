@@ -68,7 +68,9 @@ class HitAndBlow {
     // ).split(",");
 
     const inputArr = (
-      await promptInput(`「,」区切りで${answerLength}つの数字を入力してください`)
+      await promptInput(
+        `「,」区切りで${answerLength}つの数字を入力してください`,
+      )
     ).split(",");
 
     if (!this.validate(inputArr)) {
@@ -130,6 +132,9 @@ class HitAndBlow {
         return 3;
       case "hard":
         return 4;
+      default:
+        const neverValue : never = this.mode;
+        throw new Error(`${neverValue}は無効なモードです。　`);
     }
   }
 }

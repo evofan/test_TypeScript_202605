@@ -47,3 +47,6 @@ json{
 
 **TypeScript ジェネリクス**  
 [https://recursionist.io/learn/languages/typescript/oop/generics](https://recursionist.io/learn/languages/typescript/oop/generics)  
+
+**TypeScriptのTuple型：初学者向けガイド**  
+[https://qiita.com/suyamatatsuya/items/8c256036020f99f983da](https://qiita.com/suyamatatsuya/items/8c256036020f99f983da)  

@@ -44,3 +44,6 @@ json{
 
 **型アサーション「as」(type assertion)**  
 [https://typescriptbook.jp/reference/values-types-variables/type-assertion-as](https://typescriptbook.jp/reference/values-types-variables/type-assertion-as)  
+
+**TypeScript ジェネリクス**  
+[https://recursionist.io/learn/languages/typescript/oop/generics](https://recursionist.io/learn/languages/typescript/oop/generics)  

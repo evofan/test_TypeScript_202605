@@ -6,16 +6,41 @@
 // process.stdout.write(sayHello("Michael Jackson"));
 
 const printLine = (text: string, breakLine: boolean = true) => {
-  // console.log(text + (breakLine ? "\n" : ""));
   process.stdout.write(text + (breakLine ? "\n" : ""));
 };
 
-const promptInput = async (text: string) => {
-  printLine(`\n${text}\n> `, false);
+const readLine = async () => {
   const input: string = await new Promise((resolve) =>
     process.stdin.once("data", (data) => resolve(data.toString())),
   );
   return input.trim();
+};
+
+const promptInput = async (text: string) => {
+  printLine(`\n${text}\n> `, false);
+  // const input: string = await new Promise((resolve) =>
+  //   process.stdin.once("data", (data) => resolve(data.toString())),
+  // );
+  // return input.trim();
+  return readLine();
+};
+
+const promptSelect = async (
+  text: string,
+  values: readonly string[],
+): Promise<string> => {
+  printLine(`\n${text}`);
+  values.forEach((value) => {
+    printLine(`- ${value}`);
+  });
+  printLine(`> `, false);
+
+  const input = await readLine();
+  if (values.includes(input)) {
+    return input;
+  } else {
+    return promptSelect(text, values);
+  }
 };
 
 // (async () => {
@@ -43,13 +68,19 @@ class HitAndBlow {
   ];
   private answer: string[] = [];
   private tryCount = 0;
-  private mode: Mode;
+  private mode: Mode = "normal";
 
-  constructor(mode: Mode) {
-    this.mode = mode;
-  }
+  // constructor(mode: Mode) {
+  //   this.mode = mode;
+  // }
 
-  setting() {
+  // setting() {
+  async setting() {
+    // this.mode = (await promptInput("モードを入力して下さい")) as Mode;
+    this.mode = (await promptSelect("モードを入力して下さい", [
+      "normal",
+      "hard",
+    ])) as Mode;
     const answerLength = this.getAnswerLength();
 
     while (this.answer.length < answerLength) {
@@ -135,15 +166,15 @@ class HitAndBlow {
       case "hard":
         return 4;
       default:
-        const neverValue : never = this.mode;
+        const neverValue: never = this.mode;
         throw new Error(`${neverValue}は無効なモードです。　`);
     }
   }
 }
 
 (async () => {
-  const hitAndBlow = new HitAndBlow("normal");
-  hitAndBlow.setting();
+  const hitAndBlow = new HitAndBlow();
+  await hitAndBlow.setting();
   await hitAndBlow.play();
   hitAndBlow.end();
 })();

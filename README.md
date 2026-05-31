@@ -42,3 +42,5 @@ json{
 **【TypeScript】 型エイリアス（type）とは？**  
 [https://note.com/spark_branding_/n/nc2f877066a7c](https://note.com/spark_branding_/n/nc2f877066a7c)  
 
+**型アサーション「as」(type assertion)**  
+[https://typescriptbook.jp/reference/values-types-variables/type-assertion-as](https://typescriptbook.jp/reference/values-types-variables/type-assertion-as)  

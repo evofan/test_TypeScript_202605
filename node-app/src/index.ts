@@ -35,7 +35,7 @@ const promptSelect = async <T extends string>(
   });
   printLine(`> `, false);
 
-  const input = await readLine() as T;
+  const input = (await readLine()) as T;
   if (values.includes(input)) {
     return input;
   } else {
@@ -51,7 +51,9 @@ const promptSelect = async <T extends string>(
 //   process.exit();
 // })();
 
-type Mode = "normal" | "hard";
+// type Mode = "normal" | "hard";
+const modes = ["normal", "hard"] as const;
+type Mode = (typeof modes)[number];
 
 class HitAndBlow {
   private readonly answerSource = [
@@ -77,10 +79,7 @@ class HitAndBlow {
   // setting() {
   async setting() {
     // this.mode = (await promptInput("モードを入力して下さい")) as Mode;
-    this.mode = (await promptSelect("モードを入力して下さい", [
-      "normal",
-      "hard",
-    ])); // as Mode;
+    this.mode = await promptSelect("モードを入力して下さい", modes); // as Mode;
     const answerLength = this.getAnswerLength();
 
     while (this.answer.length < answerLength) {

@@ -38,6 +38,7 @@ json{
 
 **【TypeScript】ユニオン型の使い方と活用法**  
 [https://qiita.com/kenny-m/items/1a98f79c96a07f600a76](https://qiita.com/kenny-m/items/1a98f79c96a07f600a76)  
+>ユニオン型の型注釈は、2つ以上の型を|で繋げて記載します。  
 
 **【TypeScript】 型エイリアス（type）とは？**  
 [https://note.com/spark_branding_/n/nc2f877066a7c](https://note.com/spark_branding_/n/nc2f877066a7c)  

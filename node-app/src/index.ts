@@ -55,7 +55,7 @@ const promptSelect = async <T extends string>(
 const modes = ["normal", "hard"] as const;
 type Mode = (typeof modes)[number];
 
-const nextActions = ["play again", "exit"] as const;
+const nextActions = ["play again", "change game", "exit"] as const;
 type NextAction = (typeof nextActions)[number];
 
 const gameTitles = ["hit and blow", "janken"] as const;
@@ -92,6 +92,9 @@ class GameProcedure {
     );
     if (action === "play again") {
       await this.play();
+    } else if (action === "change game") {
+      await this.select();
+      await this.play();
     } else if (action === "exit") {
       this.end();
     } else {
@@ -101,8 +104,11 @@ class GameProcedure {
   }
 
   private async select() {
-    this.currentGameTitle = await promptSelect<GameTitle>("ゲームのタイトルを入力して下さい", gameTitles);
-    this.currentGame = this.gameStore[this.currentGameTitle]
+    this.currentGameTitle = await promptSelect<GameTitle>(
+      "ゲームのタイトルを入力して下さい",
+      gameTitles,
+    );
+    this.currentGame = this.gameStore[this.currentGameTitle];
   }
 
   private end() {

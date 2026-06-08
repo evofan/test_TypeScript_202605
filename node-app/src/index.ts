@@ -62,15 +62,19 @@ const gameTitles = ["hit and blow", "janken"] as const;
 type GameTitle = (typeof gameTitles)[number];
 
 type GameStore = {
-  "hit and blow": HitAndBlow;
-  janken: Janken;
+  // "hit and blow": HitAndBlow;
+  // janken: Janken;
+  //  [key: string]: HitAndBlow | Janken;
+  // [key in GameTitle]: HitAndBlow | Janken;
+  [key in GameTitle]: Game;
 };
 
 class GameProcedure {
   //  private currentGameTitle = "Hit and Blow";
   // private currentGameTitle = "Hit and Blow";
   private currentGameTitle: GameTitle | "" = "";
-  private currentGame: HitAndBlow | Janken | null = null;
+  // private currentGame: HitAndBlow | Janken | null = null;
+  private currentGame: Game | null = null;
 
   constructor(private readonly gameStore: GameStore) {}
 
@@ -117,7 +121,14 @@ class GameProcedure {
   }
 }
 
-class HitAndBlow {
+abstract class Game {
+  abstract setting(): Promise<void>;
+  abstract play(): Promise<void>;
+  abstract end(): void;
+}
+
+// class HitAndBlow {
+class HitAndBlow implements Game {
   private readonly answerSource = [
     "0",
     "1",
@@ -239,7 +250,8 @@ class HitAndBlow {
   }
 }
 
-class Janken {
+// class Janken {
+class Janken implements Game {
   private rounds = 0;
   private currentRound = 1;
   private result = {

@@ -51,3 +51,14 @@ json{
 
 **TypeScriptのTuple型：初学者向けガイド**  
 [https://qiita.com/suyamatatsuya/items/8c256036020f99f983da](https://qiita.com/suyamatatsuya/items/8c256036020f99f983da)  
+
+　　　  
+**抽象クラスとその使い方 - TypeScript**  
+[https://qiita.com/yuu_7_ns/items/2f76a8b084ba1641d15d](https://qiita.com/yuu_7_ns/items/2f76a8b084ba1641d15d)  
+
+**TypeScript で抽象クラスと抽象メンバを使って変更に強いコードを設計する**  
+[https://numb86-tech.hatenablog.com/entry/2020/02/24/141849](https://numb86-tech.hatenablog.com/entry/2020/02/24/141849)  
+
+**TypeScriptにおけるクラスのimplementsとextends**  
+[https://zenn.dev/lyio/articles/fab176ca55d415](https://zenn.dev/lyio/articles/fab176ca55d415)  
+

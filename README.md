@@ -35,6 +35,7 @@ json{
 
 **TypeScriptで理解するclass構文(private,public,readonly修飾子 初期化のショートカット)**  
 [https://zenn.dev/kimura141899/articles/60bd0bc399296c](https://zenn.dev/kimura141899/articles/60bd0bc399296c)  
+>constructorの初期化時に定義すればよくなるので大分スッキリしました  
 
 **【TypeScript】ユニオン型の使い方と活用法**  
 [https://qiita.com/kenny-m/items/1a98f79c96a07f600a76](https://qiita.com/kenny-m/items/1a98f79c96a07f600a76)  
@@ -42,15 +43,88 @@ json{
 
 **【TypeScript】 型エイリアス（type）とは？**  
 [https://note.com/spark_branding_/n/nc2f877066a7c](https://note.com/spark_branding_/n/nc2f877066a7c)  
+>TypeScriptでは、type キーワードを使って「型に名前をつける」ことができます  
+>これを 型エイリアス（type alias） と呼びます  
+>2. 一番よく使う「オブジェクト型」の例
+```
+type 型名 = 型の定義;
+
+type User = {
+  id: string;
+  name: string;
+  age: number;
+};
+
+const u: User = { id: "u1", name: "Taro", age: 20 };
+```
 
 **型アサーション「as」(type assertion)**  
 [https://typescriptbook.jp/reference/values-types-variables/type-assertion-as](https://typescriptbook.jp/reference/values-types-variables/type-assertion-as)  
+>TypeScriptには、型推論を上書きする機能があります。その機能を型アサーション(type assertion)と言います
+>型アサーションはコンパイラに「私を信じて！私のほうが型に詳しいから」と伝えるようなものです
+```
+型アサーションの書き方は2つあります。1つはas構文です。
+const value: string | number = "this is a string";
+const strLength: number = (value as string).length;
+
+もう1つはアングルブラケット構文(angle-bracket syntax)です。
+const value: string | number = "this is a string";
+const strLength: number = (<string>value).length;
+```
+>型アサーションはキャストではないため、TypeScriptでは型アサーションをキャストとは呼ばないことになっています  
 
 **TypeScript ジェネリクス**  
 [https://recursionist.io/learn/languages/typescript/oop/generics](https://recursionist.io/learn/languages/typescript/oop/generics)  
+>ジェネリクスは、コードの再利用性と柔軟性を高めるための強力なツールです
+>ジェネリクスを使うことで、型安全性を犠牲にすることなく、複数のデータ型を扱うことができるコードを書くことができます
+```
+ジェネリクスを使用する一例として、恒等関数を見てみます。
+function identity(a: number): number {
+    return a;
+}
+
+それでは、引数が文字列や配列の場合はどうでしょうか？それぞれのデータ型に対して別々の関数を書くこともできますが、
+それでは繰り返しになり、効率が悪くなってしまいます。
+その代わりに、ジェネリクスを使って恒等関数をより柔軟にすることができます。
+function identity<T>(a: T): T {
+    return a;
+}
+
+関数名と括弧の間に型パラメータTを追加しています。
+これはTypeScriptに対して、この関数を汎用的なものにしたい、つまりどんなデータ型でも扱えるようにしたいということを伝えるものです。
+```
 
 **TypeScriptのTuple型：初学者向けガイド**  
 [https://qiita.com/suyamatatsuya/items/8c256036020f99f983da](https://qiita.com/suyamatatsuya/items/8c256036020f99f983da)  
+>Tuple型は配列に似ていますが、より具体的に定義されています
+>Tuple型は、特定の数と型の順序で要素を持つ配列です。配列とは異なり、Tupleは各要素の型と順序が決まっています
+```
+Tuple型は、各要素の型を順番に指定して定義します。
+let exampleTuple: [number, string];
+exampleTuple = [42, "Hello"]; // OK
+exampleTuple = ["Hello", 42]; // エラー: 順序が違います
+
+フォームデータの処理
+例えば、フォームから入力されたデータを処理する場合に、Tupleを使って複数の値を返すことができます。
+type FormData = [string, number, boolean];
+function processFormData(name: string, age: number, isMember: boolean): FormData {
+  return [name, age, isMember];
+}
+let formData = processFormData("John", 25, true);
+console.log(formData); // ["John", 25, true]
+
+オプショナル要素
+Tupleの一部の要素をオプショナル（省略可能）にすることができます。
+let optionalTuple: [number, string?];
+optionalTuple = [42];       // OK
+optionalTuple = [42, "Hi"]; // OK
+
+可変長Tuple
+Tupleの最後に可変長引数（レスト要素）を追加できます。
+let restTuple: [number, ...string[]];
+restTuple = [42];                   // OK
+restTuple = [42, "Hello", "World"]; // OK
+```
 
 　　　  
 **抽象クラスとその使い方 - TypeScript**  

@@ -129,10 +129,21 @@ restTuple = [42, "Hello", "World"]; // OK
 　　　  
 **抽象クラスとその使い方 - TypeScript**  
 [https://qiita.com/yuu_7_ns/items/2f76a8b084ba1641d15d](https://qiita.com/yuu_7_ns/items/2f76a8b084ba1641d15d)  
+>これによって、他のプログラマに対して「このクラスは親クラスであり、直接インスタンス化せずにサブクラス化して使うべきだ」というシグナルを送ることができます  
 
 **TypeScript で抽象クラスと抽象メンバを使って変更に強いコードを設計する**  
 [https://numb86-tech.hatenablog.com/entry/2020/02/24/141849](https://numb86-tech.hatenablog.com/entry/2020/02/24/141849)  
+>TypeScript では、abstractキーワードを使うことで、抽象クラスや抽象メンバであることを明示的に宣言できる
+>そのため、抽象クラスと具象クラスを使った設計を JavaScript よりも行いやすいという利点がある
 
 **TypeScriptにおけるクラスのimplementsとextends**  
 [https://zenn.dev/lyio/articles/fab176ca55d415](https://zenn.dev/lyio/articles/fab176ca55d415)  
+>implementsの概要  
+>目的: クラスが特定のインターフェースを実装することを示す  
+>使用方法: クラスがインターフェースで定義されたプロパティやメソッドを持つことを強制する  
+>  
+>extendsの概要  
+>目的: クラスが他のクラスを継承することを示す  
+>使用方法: 基底クラス（親クラス）のプロパティやメソッドを派生クラス（子クラス）に引き継ぐ
+>派生クラスは基底クラスを拡張し、新しいプロパティやメソッドを追加できる
 

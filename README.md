@@ -1,5 +1,4 @@
-# test_TypeScript_202605
-test
+# Reviewing TypeScript
 
 reference  
 
@@ -147,3 +146,5 @@ restTuple = [42, "Hello", "World"]; // OK
 >使用方法: 基底クラス（親クラス）のプロパティやメソッドを派生クラス（子クラス）に引き継ぐ
 >派生クラスは基底クラスを拡張し、新しいプロパティやメソッドを追加できる
 
+※p155以降、サンプルがエラーが出て進まないので停止、nodeのversionを本のv14に合わせても駄目  
+<img src="https://evofan.github.io/test_TypeScript_202605/screenshot/1.png" width="50%">  

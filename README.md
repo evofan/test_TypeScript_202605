@@ -148,3 +148,10 @@ restTuple = [42, "Hello", "World"]; // OK
 
 ※p155以降、サンプルがエラーが出て進まないので停止、nodeのversionを本のv14に合わせても駄目  
 <img src="https://evofan.github.io/test_TypeScript_202605/screenshot/1.png" width="50%">  
+
+**Error: error:0308010C:digital envelope routines::unsupported**  
+[https://zenn.dev/su3_hokkaido/articles/2024-12-01_digital_envelop_routines_unsupported](https://zenn.dev/su3_hokkaido/articles/2024-12-01_digital_envelop_routines_unsupported)  
+
+**Windowsで「’NODE_ENV’ は、内部コマンドまたは外部コマンド、操作可能なプログラムまたはバッチ ファイルとして認識されていません。」と言われる時**  
+[https://www.flying-h.co.jp/media/2023/04/03/node_env-error/](https://www.flying-h.co.jp/media/2023/04/03/node_env-error/)  
+

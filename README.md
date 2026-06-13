@@ -155,3 +155,5 @@ restTuple = [42, "Hello", "World"]; // OK
 **Windowsで「’NODE_ENV’ は、内部コマンドまたは外部コマンド、操作可能なプログラムまたはバッチ ファイルとして認識されていません。」と言われる時**  
 [https://www.flying-h.co.jp/media/2023/04/03/node_env-error/](https://www.flying-h.co.jp/media/2023/04/03/node_env-error/)  
 
+※修正したので再開、p155～  
+<img src="https://evofan.github.io/test_TypeScript_202605/screenshot/2.png" width="50%">  

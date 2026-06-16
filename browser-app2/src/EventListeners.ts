@@ -1,0 +1,38 @@
+type Listeners = {
+  [id: string]: {
+    event: string;
+    element: HTMLElement;
+    handler: (e: Event) => void;
+  };
+};
+
+export class EventLListener {
+  private readonly listeners: Listeners = {};
+
+  add(
+    listenersId: string,
+    event: string,
+    element: HTMLElement,
+    handler: (e: Event) => void,
+  ) {
+    this.listeners[listenersId] = {
+      event,
+      element,
+      handler,
+    };
+
+    element.addEventListener(event, handler);
+  }
+
+  remove(listenerId: string) {
+    const listener = this.listeners[listenerId];
+
+    if (!listener) {
+      return;
+    }
+
+    listener.element.removeEventListener(listener.event, listener.handler);
+
+    delete this.listeners[listenerId];
+  }
+}

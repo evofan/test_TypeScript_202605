@@ -4,9 +4,11 @@
 
 import { EventLListener } from "./EventListeners";
 import { Task } from "./Task";
+import { TaskCollection } from "./TaskCollection";
 
 class Application {
   private readonly eventListener = new EventLListener();
+  private readonly taskCollection = new TaskCollection();
 
   start() {
     console.log("hello world");
@@ -44,6 +46,9 @@ class Application {
 
     const task = new Task({ title: titleInput.value });
     console.log(task);
+
+    this.taskCollection.add(task);
+    console.log(this.taskCollection);
   };
 }
 

@@ -157,3 +157,20 @@ restTuple = [42, "Hello", "World"]; // OK
 
 ※修正したので再開、p155～  
 <img src="https://evofan.github.io/test_TypeScript_202605/screenshot/2.png" width="50%">  
+
+**UUID（読：ユーユーアイディー）とは**  
+[https://wa3.i-3-i.info/word13163.html](https://wa3.i-3-i.info/word13163.html)  
+>※「Universally Unique Identifier」を何となく日本語にすると「普遍的に重複しないよID」となります  
+
+**uuid - npm**  
+[https://www.npmjs.com/package/uuid](https://www.npmjs.com/package/uuid)  
+>ver 14.0.0 = [TS]  
+>ver 8.3.2 = [DT]  
+
+**初めてDefinitelyTypedにPRを出した話**  
+[https://zenn.dev/syumai/articles/cso16sv24dtqr6u27ajg](https://zenn.dev/syumai/articles/cso16sv24dtqr6u27ajg)  
+>DefinitelyTypedは、あらゆるJavaScript製ライブラリに対するTypeScriptの型定義をメンテナンスしているリポジトリです  
+>基本的なスタイルとしては、npmを通じて配布されるJavaScriptのライブラリに対応する型定義ファイルを  
+>@types/${npm package名} という名前で配布する形になっており  
+>ライブラリ本体のメンテナンスと独立して更新される点が特徴となります  
+

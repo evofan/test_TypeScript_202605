@@ -174,3 +174,7 @@ restTuple = [42, "Hello", "World"]; // OK
 >@types/${npm package名} という名前で配布する形になっており  
 >ライブラリ本体のメンテナンスと独立して更新される点が特徴となります  
 
+**列挙型(enum)の問題点と代替手段 | TypeScript入門『サバイバルTypeScript』**  
+[https://typescriptbook.jp/reference/values-types-variables/enum/enum-problems-and-alternatives-to-enums](https://typescriptbook.jp/reference/values-types-variables/enum/enum-problems-and-alternatives-to-enums)  
+>TypeScriptの列挙型(enum)にはいくつか問題点が指摘されていてます。ここでは、その問題点と代替手段を説明します
+

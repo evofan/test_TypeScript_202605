@@ -3,7 +3,7 @@
 // console.log(sum(1, 2));
 
 import { EventLListener } from "./EventListeners";
-import { Task } from "./Task";
+import { Task, Status } from "./Task";
 import { TaskCollection } from "./TaskCollection";
 import { TaskRenderer } from "./TaskRenderer";
 
@@ -12,6 +12,8 @@ class Application {
   private readonly taskCollection = new TaskCollection();
   private readonly taskRenderer = new TaskRenderer(
     document.getElementById("todoList") as HTMLElement,
+    document.getElementById("doingList") as HTMLElement,
+    document.getElementById("doneList") as HTMLElement,
   );
 
   start() {
@@ -36,7 +38,34 @@ class Application {
       createForm,
       this.handleSubmit,
     );
+
+    this.taskRenderer.subscribeDragAndDrop(this.handleDropAndDrop);
   }
+
+  private handleDropAndDrop = (
+    el: Element,
+    sibling: Element | null,
+    newStatus: Status,
+  ) => {
+    const taskId = this.taskRenderer.getId(el);
+
+    if (!taskId) {
+      return;
+    }
+
+    // console.log(taskId);
+
+    // console.log(newStatus);
+
+    const task = this.taskCollection.find(taskId);
+
+    if (!task) return;
+
+    task.update({ status: newStatus });
+    this.taskCollection.update(task);
+
+    console.log(sibling);
+  };
 
   private handleSubmit = (e: Event) => {
     e.preventDefault();

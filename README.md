@@ -178,3 +178,7 @@ restTuple = [42, "Hello", "World"]; // OK
 [https://typescriptbook.jp/reference/values-types-variables/enum/enum-problems-and-alternatives-to-enums](https://typescriptbook.jp/reference/values-types-variables/enum/enum-problems-and-alternatives-to-enums)  
 >TypeScriptの列挙型(enum)にはいくつか問題点が指摘されていてます。ここでは、その問題点と代替手段を説明します
 
+**HTML5のドラッグ&ドロップを便利にしてくれるライブラリまとめ**  
+[https://blog.htmlhifive.com/2018/04/18/html5-drag-drop-library/](https://blog.htmlhifive.com/2018/04/18/html5-drag-drop-library/)  
+>DOM同士のドラッグ&ドロップに対応したライブラリです
+>

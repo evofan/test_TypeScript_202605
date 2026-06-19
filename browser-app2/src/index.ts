@@ -3,7 +3,7 @@
 // console.log(sum(1, 2));
 
 import { EventLListener } from "./EventListeners";
-import { Task, Status } from "./Task";
+import { Task, Status, statusMap } from "./Task";
 import { TaskCollection } from "./TaskCollection";
 import { TaskRenderer } from "./TaskRenderer";
 
@@ -32,6 +32,10 @@ class Application {
 
     const createForm = document.getElementById("createForm") as HTMLElement;
 
+    const deleteAllDoneTaskButton = document.getElementById(
+      "deleteAllDoneTask",
+    ) as HTMLElement;
+
     this.eventListener.add(
       "submit-handler",
       "submit",
@@ -39,6 +43,12 @@ class Application {
       this.handleSubmit,
     );
 
+    this.eventListener.add(
+      "click-handler",
+      "click",
+      deleteAllDoneTaskButton,
+      this.handleClickDeleteAllDoneTasks,
+    );
     this.taskRenderer.subscribeDragAndDrop(this.handleDropAndDrop);
   }
 
@@ -65,6 +75,23 @@ class Application {
     this.taskCollection.update(task);
 
     console.log(sibling);
+  };
+
+  private executeDeleteTask = (task: Task) => {
+    this.eventListener.remove(task.id);
+    this.taskCollection.delete(task);
+    this.taskRenderer.remove(task);
+  };
+
+  private handleClickDeleteAllDoneTasks = () => {
+    if (!window.confirm("DONE のタスクを一括削除してよろしいですか？")) return;
+
+    console.log("delete");
+
+    const doneTasks = this.taskCollection.filter(statusMap.done);
+
+    console.log(doneTasks);
+    doneTasks.forEach((task) => this.executeDeleteTask(task));
   };
 
   private handleSubmit = (e: Event) => {
@@ -98,10 +125,11 @@ class Application {
       return;
     }
     console.log(task);
-    this.eventListener.remove(task.id); // イベントリスナーから削除
-    this.taskCollection.delete(task); // タスクコレクションから削除
-    console.log(this.taskCollection);
-    this.taskRenderer.remove(task); // 画面からの削除
+    // this.eventListener.remove(task.id); // イベントリスナーから削除
+    // this.taskCollection.delete(task); // タスクコレクションから削除
+    // console.log(this.taskCollection);
+    // this.taskRenderer.remove(task); // 画面からの削除
+    this.executeDeleteTask(task);
   };
 }
 

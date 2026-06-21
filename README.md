@@ -181,4 +181,15 @@ restTuple = [42, "Hello", "World"]; // OK
 **HTML5のドラッグ&ドロップを便利にしてくれるライブラリまとめ**  
 [https://blog.htmlhifive.com/2018/04/18/html5-drag-drop-library/](https://blog.htmlhifive.com/2018/04/18/html5-drag-drop-library/)  
 >DOM同士のドラッグ&ドロップに対応したライブラリです
->
+
+**【JavaScript】filter関数の使用方法**  
+[https://zenn.dev/fijii_rin/articles/34016e4e6aa4d0](https://zenn.dev/fijii_rin/articles/34016e4e6aa4d0)  
+>配列の要素一つ一つを判定し、関数内でtrueが返ってきたもののみを抽出することができます  
+
+**【JavaScript】filter()の使い方**  
+[https://qiita.com/s_ryota/items/d76ff60d5bf652e757a3](https://qiita.com/s_ryota/items/d76ff60d5bf652e757a3)  
+>filter()は、コールバック関数で指定された条件を満たす要素だけを取り出して新しい配列を生成するメソッド  
+>コールバック関数は以下の3つの引数を取る。ただし、indexとarrayについては省略可能  
+>■ element : 配列の要素の値  
+>■ index : 配列のインデックス  
+>■ array : 処理対象の配列  

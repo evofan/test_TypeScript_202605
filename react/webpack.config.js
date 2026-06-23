@@ -1,0 +1,25 @@
+const { resolve } = require("path");
+
+module.exports = {
+  mode: "development",
+  // mode: process.env.NODE_ENV || "development",
+  devtool: "inline-source-map",
+  entry: resolve(__dirname, "src/index.jsx"),
+  output: {
+    filename: "index.js",
+    path: resolve(__dirname, "dist"),
+  },
+  resolve: {
+    extensions: [".ts", ".js", ".jsx"],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(ts|jsx)/,
+        use: {
+          loader: "ts-loader",
+        },
+      },
+    ],
+  },
+};

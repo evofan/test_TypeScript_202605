@@ -1,6 +1,7 @@
 import { Task } from "./Task";
 import dragula from "dragula";
 import { Status, statusMap } from "./Task";
+import { TaskCollection } from "./TaskCollection";
 
 export class TaskRenderer {
   //constructor(private readonly todoList: HTMLElement) {}
@@ -10,6 +11,37 @@ export class TaskRenderer {
     private readonly doingList: HTMLElement,
     private readonly doneList: HTMLElement,
   ) {}
+
+  renderAll(taskCollection: TaskCollection) {
+    const todoTasks = this.renderList(
+      taskCollection.filter(statusMap.todo),
+      this.todoList,
+    );
+    const doingTasks = this.renderList(
+      taskCollection.filter(statusMap.doing),
+      this.todoList,
+    );
+    const doneTasks = this.renderList(
+      taskCollection.filter(statusMap.done),
+      this.todoList,
+    );
+    return [...todoTasks, ...doingTasks, ...doneTasks];
+  }
+
+  private renderList(tasks: Task[], listEl: HTMLElement) {
+    if (tasks.length === 0) return [];
+
+    const taskList: Array<{ task: Task; deleteButtonEl: HTMLElement }> = [];
+
+    tasks.forEach((task) => {
+      const { taskEl, deleteButtonEl } = this.render(task);
+
+      listEl.append(taskEl);
+      taskList.push({ task, deleteButtonEl });
+    });
+
+    return taskList;
+  }
 
   append(task: Task) {
     // const taskEl = this.render(task);

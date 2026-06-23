@@ -3,7 +3,7 @@
 // console.log(sum(1, 2));
 
 import { EventLListener } from "./EventListeners";
-import { Task, Status, statusMap } from "./Task";
+import { Task, Status, statusMap} from "./Task";
 import { TaskCollection } from "./TaskCollection";
 import { TaskRenderer } from "./TaskRenderer";
 
@@ -30,11 +30,15 @@ class Application {
     // eventListener.add("sample", "click", button, () => alert("clicked"));
     // eventListener.remove("sample");
 
+    const taskItems = this.taskRenderer.renderAll(this.taskCollection);
     const createForm = document.getElementById("createForm") as HTMLElement;
-
     const deleteAllDoneTaskButton = document.getElementById(
       "deleteAllDoneTask",
     ) as HTMLElement;
+
+    taskItems.forEach(({ task, deleteButtonEl }) => {
+      this.eventListener.add(task.id, "clcick",deleteButtonEl,()=> this.handleClickDeleteTask(task))
+    });
 
     this.eventListener.add(
       "submit-handler",

@@ -1,16 +1,16 @@
-import { Task, Status } from "./Task";
+import { Task, Status, TaskObject } from "./Task";
 
 const STORAGE_KEY = "TASKS";
 
 export class TaskCollection {
- private tasks: Task[] = [];
+  // private tasks: Task[] = [];
   private readonly storage;
- // private tasks;
+  private tasks;
 
   constructor() {
     this.storage = window.localStorage;
     console.log(this.storage);
-    //this.tasks = this.getStoredTasks();
+    this.tasks = this.getStoredTasks();
   }
 
   add(task: Task) {
@@ -51,13 +51,23 @@ export class TaskCollection {
     // console.log(jsonString);
     // return [];
     try {
-      const storedTasks: any[] = JSON.parse(jsonString);
+      // const storedTasks: any[] = JSON.parse(jsonString);
+      const storedTasks = JSON.parse(jsonString);
+
+      assertIsTaskObjects(storedTasks);
+
       const tasks = storedTasks.map((task) => new Task(task));
       console.log(tasks);
       return tasks;
     } catch {
       this.storage.removeItem(STORAGE_KEY);
-      return;
+      return [];
     }
+  }
+}
+
+function assertIsTaskObjects(value: any): asserts value is TaskObject[] {
+  if (!Array.isArray(value) || !value.every((item) => Task.validate(item))) {
+    throw new Error(`引数「value」は TaskObject[]型と一致しません。`);
   }
 }

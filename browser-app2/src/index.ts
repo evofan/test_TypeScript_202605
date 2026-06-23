@@ -2,13 +2,13 @@
 
 // console.log(sum(1, 2));
 
-import { EventLListener } from "./EventListeners";
+import { EventListener } from "./EventListener";
 import { Task, Status, statusMap} from "./Task";
 import { TaskCollection } from "./TaskCollection";
 import { TaskRenderer } from "./TaskRenderer";
 
 class Application {
-  private readonly eventListener = new EventLListener();
+  private readonly eventListener = new EventListener();
   private readonly taskCollection = new TaskCollection();
   private readonly taskRenderer = new TaskRenderer(
     document.getElementById("todoList") as HTMLElement,
@@ -79,6 +79,21 @@ class Application {
     this.taskCollection.update(task);
 
     console.log(sibling);
+
+    if(sibling){
+      const nextTaskId = this.taskRenderer.getId(sibling);
+ 
+      if(!nextTaskId) return;
+
+      const nextTask = this.taskCollection.find(nextTaskId);
+
+      if(!nextTask) return;
+
+      this.taskCollection.moveAboveTarget(task, nextTask);
+
+    }else{
+       this.taskCollection.moveToLast(task);
+    }
   };
 
   private executeDeleteTask = (task: Task) => {

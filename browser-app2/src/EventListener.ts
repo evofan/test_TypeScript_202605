@@ -6,7 +6,7 @@ type Listeners = {
   };
 };
 
-export class EventLListener {
+export class EventListener {
   private readonly listeners: Listeners = {};
 
   add(

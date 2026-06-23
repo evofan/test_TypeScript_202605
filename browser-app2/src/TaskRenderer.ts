@@ -19,11 +19,11 @@ export class TaskRenderer {
     );
     const doingTasks = this.renderList(
       taskCollection.filter(statusMap.doing),
-      this.todoList,
+      this.doingList,
     );
     const doneTasks = this.renderList(
       taskCollection.filter(statusMap.done),
-      this.todoList,
+      this.doneList,
     );
     return [...todoTasks, ...doingTasks, ...doneTasks];
   }
@@ -92,8 +92,7 @@ export class TaskRenderer {
     }
   }
   subscribeDragAndDrop(
-    onDrop: (el: Element, sibling: Element | null, newStatus: Status) => void,
-  ) {
+    onDrop: (el: Element, sibling: Element | null, newStatus: Status) => void) {
     // dragula([this.todoList, this.doingList, this.doneList]).on(
     //   "drop",
     //   (el, target, source, sibling) => {
@@ -103,7 +102,8 @@ export class TaskRenderer {
     //     console.log(sibling);
     //   },
     // );
-    dragula([this.todoList, this.doingList, this.doneList]).on(
+    dragula([this.todoList, this.doingList, this.doneList])
+    .on(
       "drop",
       (el, target, _source, sibling) => {
         let newStatus: Status = statusMap.todo;

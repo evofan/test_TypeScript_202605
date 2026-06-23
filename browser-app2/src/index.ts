@@ -3,7 +3,7 @@
 // console.log(sum(1, 2));
 
 import { EventListener } from "./EventListener";
-import { Task, Status, statusMap} from "./Task";
+import { Task, Status, statusMap } from "./Task";
 import { TaskCollection } from "./TaskCollection";
 import { TaskRenderer } from "./TaskRenderer";
 
@@ -37,18 +37,18 @@ class Application {
     ) as HTMLElement;
 
     taskItems.forEach(({ task, deleteButtonEl }) => {
-      this.eventListener.add(task.id, "clcick",deleteButtonEl,()=> this.handleClickDeleteTask(task))
+      this.eventListener.add(
+        "click",
+        deleteButtonEl,
+        () => this.handleClickDeleteTask(task),
+        //(e)=> this.handleClickDeleteAllDoneTasks(),
+        task.id,
+      );
     });
 
-    this.eventListener.add(
-      "submit-handler",
-      "submit",
-      createForm,
-      this.handleSubmit,
-    );
+    this.eventListener.add("submit", createForm, this.handleSubmit);
 
     this.eventListener.add(
-      "click-handler",
       "click",
       deleteAllDoneTaskButton,
       this.handleClickDeleteAllDoneTasks,
@@ -80,19 +80,18 @@ class Application {
 
     console.log(sibling);
 
-    if(sibling){
+    if (sibling) {
       const nextTaskId = this.taskRenderer.getId(sibling);
- 
-      if(!nextTaskId) return;
+
+      if (!nextTaskId) return;
 
       const nextTask = this.taskCollection.find(nextTaskId);
 
-      if(!nextTask) return;
+      if (!nextTask) return;
 
       this.taskCollection.moveAboveTarget(task, nextTask);
-
-    }else{
-       this.taskCollection.moveToLast(task);
+    } else {
+      this.taskCollection.moveToLast(task);
     }
   };
 
@@ -132,8 +131,11 @@ class Application {
     // this.taskRenderer.append(task);
     const { deleteButtonEl } = this.taskRenderer.append(task);
 
-    this.eventListener.add(task.id, "click", deleteButtonEl, () =>
-      this.handleClickDeleteTask(task),
+    this.eventListener.add(
+      "click",
+      deleteButtonEl,
+      () => this.handleClickDeleteTask(task),
+      task.id,
     );
 
     titleInput.value = "";
